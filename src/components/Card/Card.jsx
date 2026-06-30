@@ -7,8 +7,8 @@ function Card({ card }) {
         <h3 className={styles.title}>
           Clase {card.id}: {card.titulo}
         </h3>
-
-        <img className={styles.icon} src={`/img/${card.icono}`} alt="" />
+        {console.log(`/img/${card.icono}`)}
+        <img className={styles.icon} src={`img/${card.icono}`} alt="" />
       </div>
 
       <div className={styles.stats}>
