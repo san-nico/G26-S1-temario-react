@@ -22,21 +22,28 @@ const Content = styled.div`
 const Title = styled.h1`
   margin: 0;
   font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  color: #e2e8f0;
+  font-weight: bold;
 `;
 
 const Link = styled.a``;
 
 const DateText = styled.p``;
 
-const Image = styled.img``;
+const ImageWrapper = styled.div`
+  height: 5rem;
+`;
+const Image = styled.img`
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+`;
 
 function Navbar({ metadata }) {
   return (
     <Nav>
-      <Image src={logo} alt="" />
+      <ImageWrapper>
+        <Image src={logo} alt="" />
+      </ImageWrapper>
       <Content>
         <Title>{metadata.titulo}</Title>
         <Link href={metadata.url}>{metadata.url}</Link>

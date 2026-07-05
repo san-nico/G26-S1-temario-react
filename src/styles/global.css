@@ -20,8 +20,3 @@ a {
 html {
   font-size: clamp(14px, 0.5vw + 14px, 18px);
 }
-
-body {
-  background: black;
-  color: white;
-}

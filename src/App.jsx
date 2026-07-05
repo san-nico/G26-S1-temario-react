@@ -37,7 +37,7 @@ const AppWrapper = styled.div`
     #070a12 60%,
     #05060a 100%
   );
-  color: white;
+  color: #fffc;
 `;
 
 /* ========== GRID ========== */

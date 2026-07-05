@@ -7,11 +7,10 @@ const Article = styled.article`
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
   --radius-lg: 1rem;
-  --text: #f8fafc;
-  --text-soft: #cbd5e1;
-  --text-strong: #e2e8f0;
+  --fondo-hue: 221;
   --transition: all 0.2s ease;
 
+  filter: saturate(0.7);
   display: grid;
   grid-template-rows: subgrid;
   grid-row: span 3;
@@ -20,8 +19,13 @@ const Article = styled.article`
   gap: var(--space-md);
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(145deg, hsl(221, 47%, 30%), hsl(221, 47%, 20%));
-  color: var(--text);
+
+  background: linear-gradient(
+    145deg,
+    hsl(var(--fondo-hue), 47%, 30%),
+    hsl(var(--fondo-hue), 47%, 20%)
+  );
+
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
   transition:
     transform 0.2s ease,
@@ -34,7 +38,8 @@ const Article = styled.article`
 `;
 
 const Header = styled.header`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto;
   justify-content: space-between;
   align-items: flex-start;
   gap: var(--space-md);
@@ -49,37 +54,30 @@ const Title = styled.h3`
   font-size: 1.1rem;
   font-weight: 700;
   line-height: 1.3;
-  color: var(--text-strong);
 `;
 
+const IconWrapper = styled.div`
+  width: 3rem;
+  height: 3rem;
+`;
 const Icon = styled.img`
-  height: 2.75rem;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.05);
 `;
 
 const Stats = styled.div`
-  display: grid;
-  gap: var(--space-xs);
-  padding: var(--space-sm);
-  border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.03);
-`;
-
-const Row = styled.div`
   display: flex;
-  justify-content: space-between;
-  font-size: 0.85rem;
-  color: var(--text-soft);
-`;
-
-const Label = styled.span`
-  opacity: 0.7;
+  gap: var(--space-xs);
 `;
 
 const Value = styled.span`
-  font-weight: 500;
-  color: var(--text);
+  opacity: 0.8;
+  font-size: 0.8rem;
+  background: #0005;
+  padding: 0.4rem 1rem;
+  border-radius: 1rem;
 `;
 
 const Bloques = styled.div`
@@ -102,7 +100,7 @@ const Chip = styled.a`
   font-size: 0.75rem;
   font-weight: 600;
   text-decoration: none;
-  color: white;
+
   cursor: pointer;
   transition: var(--transition);
   background: linear-gradient(
@@ -118,37 +116,36 @@ const Chip = styled.a`
 `;
 
 const BloqueChip = styled(Chip)`
-  --color: 140, 50%;
+  --color: 120, 50%;
 `;
 
 const DiapositivaChip = styled(Chip)`
-  --color: 221, 50%;
+  --color: 210, 50%;
 `;
 
 const FormularioChip = styled(Chip)`
   --color: 0, 50%;
 `;
+const AyudantiaChip = styled(Chip)`
+  --color: 320, 50%;
+`;
+export default function Card({ card }) {
+  const Root = card.modalidad === "virtual" ? ArticleVirtual : Article;
 
-function Card({ card }) {
   return (
-    <Article>
+    <Root>
       <Header>
         <Title>
           Clase {card.id}: {card.titulo}
         </Title>
-        <Icon src={`img/${card.icono}`} alt="" />
+        <IconWrapper>
+          <Icon src={`img/${card.icono}`} alt="" />
+        </IconWrapper>
       </Header>
 
       <Stats>
-        <Row>
-          <Label>Fecha</Label>
-          <Value>{card.fecha}</Value>
-        </Row>
-
-        <Row>
-          <Label>Modalidad</Label>
-          <Value>{card.modalidad}</Value>
-        </Row>
+        <Value>{card.fecha}</Value>
+        <Value>{card.modalidad}</Value>
       </Stats>
 
       <Bloques>
@@ -165,13 +162,13 @@ function Card({ card }) {
           ))}
 
           {card.ayudantia && (
-            <BloqueChip
+            <AyudantiaChip
               href={card.ayudantia}
               target="_blank"
               rel="noopener noreferrer"
             >
               Ayudantia
-            </BloqueChip>
+            </AyudantiaChip>
           )}
         </Sub>
 
@@ -193,8 +190,10 @@ function Card({ card }) {
           </FormularioChip>
         </Sub>
       </Bloques>
-    </Article>
+    </Root>
   );
 }
 
-export default Card;
+const ArticleVirtual = styled(Article)`
+  --fondo-hue: 0;
+`;
