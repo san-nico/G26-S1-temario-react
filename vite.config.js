@@ -1,8 +1,8 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import wyw from "@wyw-in-js/vite";
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  base: "/G26-S1-temario-react/", // 👈 OJO: nombre exacto del repo
+  plugins: [wyw(), react()],
+  base: "/G26-S1-temario-react/",
 });

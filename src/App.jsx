@@ -1,13 +1,32 @@
 import { useEffect } from "react";
-import styled from "styled-components";
-import "./App.css";
+import { styled } from "@linaria/react";
 
 import contenido from "./contenido/contenido.json";
-import Card from "./components/Card/Card";
-import CardNull from "./components/CardNull/CardNull";
+import Card from "./components/Card";
+import CardNull from "./components/CardNull";
 import * as Clase from "./utils/clase";
 
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./components/Navbar";
+
+export default function App() {
+  return (
+    <AppWrapper>
+      <Navbar metadata={contenido.metadata} />
+
+      <Main>
+        <CardHolder>
+          {contenido.clases.map((item, index) =>
+            Clase.esVigente(item) ? (
+              <Card key={item.id ?? index} card={item} />
+            ) : (
+              <CardNull key={item.id ?? index} card={item} />
+            ),
+          )}
+        </CardHolder>
+      </Main>
+    </AppWrapper>
+  );
+}
 
 /* ========== LAYOUT PRINCIPAL ========== */
 const AppWrapper = styled.div`
@@ -35,33 +54,7 @@ const CardHolder = styled.section`
 
 /* ========== CONTENIDO ========== */
 const Main = styled.main`
-  padding: 2rem 1.5rem;
+  padding: 2rem 0.5rem;
   display: grid;
   gap: 2rem;
 `;
-
-function App() {
-  useEffect(() => {
-    document.title = contenido.metadata.titulo;
-  }, []);
-
-  return (
-    <AppWrapper>
-      <Navbar metadata={contenido.metadata} />
-
-      <Main>
-        <CardHolder>
-          {contenido.clases.map((item, index) =>
-            Clase.esVigente(item) ? (
-              <Card key={item.id ?? index} card={item} />
-            ) : (
-              <CardNull key={item.id ?? index} card={item} />
-            ),
-          )}
-        </CardHolder>
-      </Main>
-    </AppWrapper>
-  );
-}
-
-export default App;

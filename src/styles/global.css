@@ -9,12 +9,18 @@
   text-decoration: none;
   color: inherit;
 }
+
 img {
   display: block;
 }
+
 a {
   display: block;
 }
+html {
+  font-size: clamp(14px, 0.5vw + 14px, 18px);
+}
+
 body {
   background: black;
   color: white;
