@@ -4,6 +4,10 @@ Aplicación web desarrollada con React y Vite para mostrar el temario del curso 
 
 Esta interfaz está pensada para ser sencilla, visual y fácil de mantener. El contenido de las clases se administra desde un archivo JSON, lo que permite actualizar el temario sin modificar la lógica de la aplicación.
 
+## Demo
+
+[https://san-nico.github.io/G26-S1-temario-react/](https://san-nico.github.io/G26-S1-temario-react/)
+
 ## Características
 
 - Vista general del temario organizada por clases
