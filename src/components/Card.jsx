@@ -83,6 +83,7 @@ const Value = styled.span`
 const Bloques = styled.div`
   display: grid;
   gap: var(--space-sm);
+  align-content: end;
 `;
 
 const Sub = styled.div`
@@ -129,6 +130,7 @@ const FormularioChip = styled(Chip)`
 const AyudantiaChip = styled(Chip)`
   --color: 320, 50%;
 `;
+
 export default function Card({ card }) {
   const Root = card.modalidad === "virtual" ? ArticleVirtual : Article;
 
