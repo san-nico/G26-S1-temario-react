@@ -127,15 +127,15 @@
     },
     {
       "id": "10",
-      "titulo": "",
+      "titulo": "Next.js, manejo de estado useState y efectos useEffect",
       "titulo_old": "Manejo de Estado: useState",
-      "fecha": "",
-      "modalidad": "",
-      "diapositiva": "",
+      "fecha": "18-07-2026",
+      "modalidad": "virtual",
+      "diapositiva": "https://docs.google.com/presentation/d/1od5-ZEf8-OVLWqZc8zOEupv-LyiVcjjPbWqVizq8pcA/edit?usp=sharing",
       "formulario": "https://softwarelibrechile.cl/G26-S1-10-Tarea",
       "bloques": [],
       "ayudantia": "",
-      "icono": "usestate.png"
+      "icono": "useeffect.png"
     },
     {
       "id": "11",
